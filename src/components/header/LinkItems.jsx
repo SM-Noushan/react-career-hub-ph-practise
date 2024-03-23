@@ -1,12 +1,19 @@
 import { NavLink } from "react-router-dom";
-
+const inActivestyle = 'text-base text-dark-03 font-medium';
+const textStyle = 'bg-gradient-to-r from-grad-01 to-grad-02 bg-clip-text text-transparent font-bold';
 const LinkItems = () => {
     return (
         <>
-            <li><NavLink to="/">Home</NavLink></li>
+            <li className=""><NavLink to="/" className={({ isActive }) =>
+                isActive ? `${textStyle} focus:bg-gradient-to-r focus:from-grad-01 focus:to-grad-02 focus:bg-clip-text focus:text-transparent text-base ` : inActivestyle
+            }>Home</NavLink></li>
             {/* <li><NavLink>Statistics</NavLink></li> */}
-            <li><NavLink to="/applied-jobs">Applied Jobs</NavLink></li>
-            <li><NavLink to="/blogs">Blogs</NavLink></li>
+            <li><NavLink className={({ isActive }) =>
+                isActive ? `${textStyle} focus:bg-gradient-to-r focus:from-grad-01 focus:to-grad-02 focus:bg-clip-text focus:text-transparent text-base ` : inActivestyle
+            } to="/applied-jobs">Applied Jobs</NavLink></li >
+            <li><NavLink className={({ isActive }) =>
+                isActive ? `${textStyle} focus:bg-gradient-to-r focus:from-grad-01 focus:to-grad-02 focus:bg-clip-text focus:text-transparent text-base ` : inActivestyle
+            } to="/blogs">Blogs</NavLink></li>
         </>
     );
 };

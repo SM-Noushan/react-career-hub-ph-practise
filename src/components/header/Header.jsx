@@ -3,7 +3,7 @@ import LinkItems from "./LinkItems";
 const Header = () => {
     return (
         <nav className="bg-base-200">
-            <div className="navbar md:container mx-auto px-0 oy-4">
+            <div className="navbar md:container xl:max-w-screen-xl mx-auto px-0 py-12">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,7 +13,7 @@ const Header = () => {
                             <LinkItems />
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">CareerHub</a>
+                    <a className="btn btn-ghost text-3xl font-extrabold">CareerHub</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -21,7 +21,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Star Applying</a>
+                    <a className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl font-extrabold px-7">Star Applying</a>
                 </div>
             </div>
         </nav>

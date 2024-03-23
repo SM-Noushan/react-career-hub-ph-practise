@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <div className="md:container mx-auto">
+            <div className="md:container mx-auto xl:max-w-screen-xl">
                 <Category />
                 <Featured />
             </div>
