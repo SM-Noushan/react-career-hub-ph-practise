@@ -5,7 +5,7 @@ import Header from "./components/header/Header"
 function App() {
   return (
     <>
-      <div className="md:container mx-auto">
+      <div className="font-manrope">
         <Header />
         <Outlet />
       </div>
