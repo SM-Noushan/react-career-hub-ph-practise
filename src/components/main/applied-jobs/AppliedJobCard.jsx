@@ -1,5 +1,6 @@
 import salIcon from '../../../assets/icons/money.png';
 import locIcon from '../../../assets/icons/location2.png';
+import { Link } from 'react-router-dom';
 const AppliedJobCard = ({ data }) => {
     const { id,
         logo,
@@ -32,10 +33,10 @@ const AppliedJobCard = ({ data }) => {
                     </div>
                 </div>
             </div>
-            {/* href={`/job-details/${id}`} */}
-            <div className="col-span-2">
+            {/*  */}
+            <Link to={`/job-details/${id}`} className="col-span-2">
                 <button className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl px-7 mt-5">View Details</button>
-            </div>
+            </Link>
         </div>
     );
 };
