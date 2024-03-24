@@ -1,8 +1,10 @@
 import salIcon from '../../../../assets/icons/money.png';
 import locIcon from '../../../../assets/icons/location2.png'
+import { Link } from 'react-router-dom';
 
 const FeaturedCard = ({ data }) => {
-    const { logo,
+    const { id,
+        logo,
         job_title,
         company_name,
         remote_or_onsite,
@@ -28,7 +30,9 @@ const FeaturedCard = ({ data }) => {
                     <p className="text-dark-03 text-xl font-semibold">Salary: {salary}</p>
                 </div>
             </div>
-            <button className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl px-7">View Details</button>
+            <Link to={`/job-details/${id}`}>
+                <button className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl px-7 mt-5">View Details</button>
+            </Link>
         </div>
     );
 };
