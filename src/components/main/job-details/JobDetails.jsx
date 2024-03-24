@@ -1,10 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Cover from "../home/banner/Cover";
 import salIcon from "../../../assets/icons/money.png";
 import calIcon from "../../../assets/icons/calendar.png";
 import phIcon from "../../../assets/icons/phone.png";
 import mailIcon from "../../../assets/icons/email.png";
 import locIcon from "../../../assets/icons/location2.png";
+import { storeAppliedJob } from "../../../utility/localStorage";
 
 const JobDetails = () => {
     const jobs = useLoaderData();
@@ -17,8 +21,15 @@ const JobDetails = () => {
         salary,
         job_title,
         contact_information: { phone, email, address } } = job;
+    const handleApplyJob = () => {
+        const status = storeAppliedJob(id);
+        if (status)
+            return toast.success('Applied successfully!');
+        return toast.warning('Already applied!');
+    }
     return (
         <>
+            <ToastContainer />
             <Cover heading="Job Details" />
             <div className="md:container xl:max-w-screen-xl mx-auto grid grid-cols-6 gap-6 my-24">
                 <div className="col-span-4 font-extrabold text-justify space-y-4">
@@ -57,7 +68,7 @@ const JobDetails = () => {
                             <p className="font-bold">Address<span className="font-extrabold">:</span> <span className="text-dark-03 font-medium">{address}</span></p>
                         </div>
                     </div>
-                    <button className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl font-extrabold px-7 mt-6 w-full"> Apply Now</button>
+                    <button onClick={handleApplyJob} className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl font-extrabold px-7 mt-6 w-full"> Apply Now</button>
                 </div>
             </div>
         </>
