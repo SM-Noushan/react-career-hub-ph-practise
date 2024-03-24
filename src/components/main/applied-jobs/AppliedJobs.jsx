@@ -3,10 +3,14 @@ import Cover from "../home/banner/Cover";
 import { useEffect, useState } from "react";
 import { loadAppliedJobs } from "../../../utility/localStorage";
 import AppliedJobCard from "./AppliedJobCard";
+import { RxDropdownMenu } from "react-icons/rx";
+import { BsGrid1X2, BsListUl } from "react-icons/bs";
+import FeaturedCard from "../home/featured/FeaturedCard";
 
 const AppliedJobs = () => {
     const [appliedJobs, setAppliedJobs] = useState([]);
     const [filteredAppliedJobs, setFilteredAppliedJobs] = useState(appliedJobs);
+    const [viewState, setViewState] = useState(1); //1=List, 2=grid
     const jobs = useLoaderData();
     useEffect(() => {
         const appliedJobsId = loadAppliedJobs();
@@ -28,18 +32,22 @@ const AppliedJobs = () => {
         <>
             <Cover heading="Applied Jobs" />
             <div className="md:container xl:max-w-screen-xl mx-auto my-24">
-                <div className="text-right">
+                <div className="flex justify-end items-center gap-4">
                     <div className="dropdown dropdown-bottom dropdown-left ">
-                        <div tabIndex={0} role="button" className="btn m-1">Filter By</div>
+                        <div tabIndex={0} role="button" className="btn m-1">Filter By <RxDropdownMenu /></div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52 *:font-semibold">
                             <li><button onClick={() => handleFilterData('all')}>All</button></li>
                             <li><button onClick={() => handleFilterData('onsite')}>Onsite</button></li>
                             <li><button onClick={() => handleFilterData('remote')}>Remote</button></li>
                         </ul>
                     </div>
+                    <button onClick={() => setViewState(0)} className={`btn ${!viewState ? 'bg-grad-01 hover:bg-grad-02 text-white' : ''} text-2xl`}><BsGrid1X2 /></button>
+                    <button onClick={() => setViewState(1)} className={`btn ${viewState ? 'bg-grad-01 hover:bg-grad-02 text-white' : ''} text-2xl`}><BsListUl /></button>
                 </div>
                 {
-                    filteredAppliedJobs.length ? filteredAppliedJobs.map(appliedJob => <AppliedJobCard key={appliedJob.id} data={appliedJob} />) :
+                    filteredAppliedJobs.length ? viewState ? filteredAppliedJobs.map(appliedJob => <AppliedJobCard key={appliedJob.id} data={appliedJob} />) : <div className="grid grid-cols-2">
+                        {filteredAppliedJobs.map(appliedJob => <FeaturedCard key={appliedJob.id} data={appliedJob} />)}
+                    </div> :
                         <div role="alert" className="alert bg-grad-02 text-white min-h-32 flex justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span className="text-3xl font-bold">No list found. Please apply first.</span>
