@@ -12,6 +12,7 @@ export default {
       'dark-04': '#A3A3A3',
       'grad-01': '#7E90FE',
       'grad-02': '#9873FF',
+      'white': '#FFFFFF',
     },
     fontFamily: {
       inter: ['Inter', 'sans-serif'],
