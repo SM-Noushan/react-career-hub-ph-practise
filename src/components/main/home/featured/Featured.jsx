@@ -15,8 +15,8 @@ const Featured = () => {
     return (
         <section>
             <SectionInfo title={title} desc={desc} />
-            <div className="grid grid-cols-2 gap-6">
-                {jobs.slice(0, dataLength).map(job => <FeaturedCard key={job.id} data={job} />)}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {jobs.slice(0, dataLength).map(job => <FeaturedCard key={job.id} data={job} type={1} />)}
             </div>
             <div className={`text-center ${jobs.length === dataLength && 'hidden'}`}>
                 <button onClick={() => setDataLength(jobs.length)} className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white">See All Jobs</button>

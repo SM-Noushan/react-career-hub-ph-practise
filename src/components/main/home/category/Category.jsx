@@ -14,7 +14,7 @@ const Category = () => {
     return (
         <div className="my-24">
             <SectionInfo title={title} desc={desc} />
-            <div className="flex flex-wrap justify-center gap-12 my-8">
+            <div className="flex flex-wrap justify-center gap-8 lg: xl:gap-12 my-8">
                 {categories.map(category => <CategoryCard key={category.id} data={category} />)}
             </div>
         </div>

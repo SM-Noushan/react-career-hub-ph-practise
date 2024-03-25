@@ -31,9 +31,9 @@ const AppliedJobs = () => {
     return (
         <>
             <Cover heading="Applied Jobs" />
-            <div className="md:container xl:max-w-screen-xl mx-auto my-24">
+            <div className="max-w-[425px] md:container xl:max-w-screen-xl mx-auto px-2 my-24">
                 <div className="flex justify-end items-center gap-4">
-                    <div className="dropdown dropdown-bottom dropdown-left ">
+                    <div className="dropdown drop-shadow-sm dropdown-end">
                         <div tabIndex={0} role="button" className="btn m-1">Filter By <RxDropdownMenu /></div>
                         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52 *:font-semibold">
                             <li><button onClick={() => handleFilterData('all')}>All</button></li>
@@ -45,9 +45,12 @@ const AppliedJobs = () => {
                     <button onClick={() => setViewState(1)} className={`btn ${viewState ? 'bg-grad-01 hover:bg-grad-02 text-white' : ''} text-2xl`}><BsListUl /></button>
                 </div>
                 {
-                    filteredAppliedJobs.length ? viewState ? filteredAppliedJobs.map(appliedJob => <AppliedJobCard key={appliedJob.id} data={appliedJob} />) : <div className="grid grid-cols-2">
-                        {filteredAppliedJobs.map(appliedJob => <FeaturedCard key={appliedJob.id} data={appliedJob} />)}
-                    </div> :
+                    filteredAppliedJobs.length ? viewState ? filteredAppliedJobs.map(appliedJob => <AppliedJobCard key={appliedJob.id} data={appliedJob} />)
+                        :
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-20">
+                            {filteredAppliedJobs.map(appliedJob => <FeaturedCard key={appliedJob.id} data={appliedJob} />)}
+                        </div>
+                        :
                         <div role="alert" className="alert bg-grad-02 text-white min-h-32 flex justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-10 h-10"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span className="text-3xl font-bold">No list found. Please apply first.</span>

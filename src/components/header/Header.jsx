@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import LinkItems from "./LinkItems";
 
 const Header = () => {
     return (
         <nav className="bg-base-200">
-            <div className="navbar md:container xl:max-w-screen-xl mx-auto px-0 py-12">
+            <div className="navbar max-w-[425px] md:container xl:max-w-screen-xl mx-auto px-4 md:px-0 py-8 md:py-12">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,7 +14,7 @@ const Header = () => {
                             <LinkItems />
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-3xl font-extrabold">CareerHub</a>
+                    <Link to="/" className="btn btn-ghost text-lg lg:text-3xl font-extrabold px-0 lg:px-4">CareerHub</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -21,7 +22,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xl font-extrabold px-7">Star Applying</a>
+                    <a className="btn bg-gradient-to-r from-grad-01 to-grad-02 text-white text-xs md:text-xl font-extrabold md:px-7">Star Applying</a>
                 </div>
             </div>
         </nav>
